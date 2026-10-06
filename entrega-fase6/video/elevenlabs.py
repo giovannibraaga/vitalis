@@ -61,7 +61,7 @@ print(f'{len(text)} caracteres, modelo {args.model}, voz {args.voice}')
 body = {'text': text, 'model_id': args.model, 'language_code': 'pt'}
 if args.speed:
     body['voice_settings'] = {'speed': args.speed}
-res = call('POST', f'{API}/text-to-speech/{args.voice}/with-timestamps?output_format=mp3_44100_192', key, body)
+res = call('POST', f'{API}/text-to-speech/{args.voice}/with-timestamps?output_format=mp3_44100_128', key, body)
 
 OUT.mkdir(parents=True, exist_ok=True)
 (OUT / 'take.mp3').write_bytes(base64.b64decode(res['audio_base64']))
