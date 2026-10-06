@@ -71,16 +71,20 @@ Pré-requisitos: Node 18+ com `playwright` (Chromium), Python 3 com `piper-tts`,
 # 1. App web para a demonstração (na raiz do repositório)
 npx expo export -p web --output-dir /tmp/vitalis-web && npx serve -s /tmp/vitalis-web -l 8090 &
 
-# 2. Narração (modelo pt-br-edresson-low.onnx de https://github.com/rhasspy/piper/releases/tag/v0.0.2)
+# 2. Narração — escolha UMA opção
 cd entrega-fase6/video
+#  a) ElevenLabs, tomada única (requer ELEVENLABS_API_KEY e acesso a api.elevenlabs.io)
+python3 elevenlabs.py --voice SEU_VOICE_ID          # --list-models, --model, --speed 1.08
+#  b) Piper offline (modelo pt-br-edresson-low.onnx de https://github.com/rhasspy/piper/releases/tag/v0.0.2)
 python3 tts.py caminho/para/pt-br-edresson-low.onnx 0.8
 
-# 3. Cenas animadas, gravação real da demo e montagem final
+# 3. Linha do tempo, cenas animadas, gravação real da demo e montagem final
+python3 timing.py              # usa build/tts/take.json (ElevenLabs) se existir; senão os trechos do Piper
 node render-scenes.mjs
 node demo-capture.mjs http://localhost:8090
 python3 assemble.py            # --no-music remove a trilha ambiente
 ```
 
-- O texto falado fica em `video/narration.json`, e a duração de cada cena acompanha automaticamente o áudio.
+- O texto falado fica em `video/narration.json`, e a duração de cada cena acompanha automaticamente o áudio. Na tomada única da ElevenLabs, o texto inteiro é enviado de uma vez e o alinhamento por caractere define onde cada cena começa.
 - As cenas ficam em `video/scenes.html` e os slides em `slides/slides.html`. A identidade visual está em `assets/vitalis.css` (fontes Inter, Poppins e Material Symbols, todas locais).
-- Para trocar a demonstração por outra gravação, substitua `video/build/seg/demo.mp4` (1920×1080, 30 fps, H.264), ajuste `video/build/timeline-demo.json` e rode `python3 assemble.py`.
+- Para trocar a demonstração por outra gravação, substitua `video/build/seg/demo.mp4` (1920×1080, 30 fps, H.264), com a duração indicada para a cena `demo` em `video/build/timing.json`, e rode `python3 assemble.py`.

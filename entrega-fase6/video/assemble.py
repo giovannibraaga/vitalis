@@ -7,7 +7,6 @@ import numpy as np
 HERE = Path(__file__).parent
 BUILD = HERE / 'build'
 OUT = HERE.parent
-ORDER = ['abertura', 'mvp', 'lgpd', 'governanca', 'seguranca', 'aquisicao', 'demo', 'encerramento']
 SR = 48000
 
 narration = {s['id']: s['beats'] for s in json.loads((HERE / 'narration.json').read_text())['scenes']}
@@ -23,28 +22,34 @@ def read_wav(p):
 def probe(p):
     return float(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(p)]))
 
-# 1) linha do tempo
-offset, cues = 0.0, []
-seg_list = []
-for sid in ORDER:
-    tl = json.loads((BUILD / f'timeline-{sid}.json').read_text())
-    seg = BUILD / 'seg' / f'{sid}.mp4'
-    real = probe(seg)
-    for i, b in enumerate(tl['beats']):
-        cues.append((offset + b, sid, i))
+# 1) linha do tempo (gerada por timing.py)
+timing = json.loads((BUILD / 'timing.json').read_text())
+cues, seg_list = [], []
+for sc in timing['scenes']:
+    for i, (b, e) in enumerate(zip(sc['beats'], sc['ends'])):
+        cues.append((sc['start'] + b, sc['start'] + e, sc['id'], i))
+    seg = BUILD / 'seg' / f"{sc['id']}.mp4"
+    if abs(probe(seg) - sc['length']) > 0.1:
+        sys.exit(f'ERRO: {seg.name} tem {probe(seg):.2f}s, esperado {sc["length"]:.2f}s; renderize de novo')
     seg_list.append(f"file '{seg}'")
-    offset += real
-total = offset
-print(f'duração total: {total:.1f}s ({int(total // 60)}:{total % 60:04.1f})')
+total = timing['total']
+print(f'duração total: {total:.1f}s ({int(total // 60)}:{total % 60:04.1f}), narração: {timing["mode"]}')
 if total > 300:
     sys.exit('ERRO: o vídeo passou de 5 minutos')
 
 # 2) narração
 voice = np.zeros(int(total * SR) + SR)
-for start, sid, i in cues:
-    a = read_wav(BUILD / 'tts' / f'{sid}-{i}.wav')
-    k = int(start * SR)
-    voice[k:k + len(a)] += a[: len(voice) - k]
+if timing['mode'] == 'take':
+    # tomada única da ElevenLabs, do início ao fim, sem cortes
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(BUILD / 'tts' / 'take.mp3'), '-ac', '1', '-ar', str(SR),
+                    str(BUILD / 'tts' / 'take.wav')], check=True)
+    a = read_wav(BUILD / 'tts' / 'take.wav')[: len(voice)]
+    voice[: len(a)] = a
+else:
+    for start, _, sid, i in cues:
+        a = read_wav(BUILD / 'tts' / f'{sid}-{i}.wav')
+        k = int(start * SR)
+        voice[k:k + len(a)] += a[: len(voice) - k]
 
 # 3) trilha ambiente (acordes suaves sintetizados, sem direitos autorais)
 mix = voice * 0.9
@@ -82,7 +87,6 @@ subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '
 def ts(x):
     ms = int(round(x * 1000)); h, ms = divmod(ms, 3600000); m, ms = divmod(ms, 60000); s, ms = divmod(ms, 1000)
     return f'{h:02}:{m:02}:{s:02},{ms:03}'
-durs = json.loads((BUILD / 'tts' / 'durations.json').read_text())
-srt = [f'{n}\n{ts(st)} --> {ts(st + durs[f"{sid}-{i}"])}\n{narration[sid][i]}\n' for n, (st, sid, i) in enumerate(cues, 1)]
+srt = [f'{n}\n{ts(st)} --> {ts(en)}\n{narration[sid][i]}\n' for n, (st, en, sid, i) in enumerate(cues, 1)]
 (OUT / 'Vitalis_Fase6_Video.srt').write_text('\n'.join(srt), encoding='utf-8')
 print('ok ->', OUT / 'Vitalis_Fase6_Video.mp4')

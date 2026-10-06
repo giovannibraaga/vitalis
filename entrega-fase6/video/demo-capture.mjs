@@ -1,6 +1,6 @@
 // Grava a demonstração REAL do app Vitalis (build web do repositório) dentro da moldura de demo.html.
 // Uso: node demo-capture.mjs [url-do-app]   (padrão: http://localhost:8090, servido a partir de `npx expo export -p web`)
-// Saída: build/seg/demo.mp4 e build/timeline-demo.json (instantes reais de início de cada trecho narrado)
+// Saída: build/seg/demo.mp4 (rode antes: python3 timing.py)
 import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -10,8 +10,8 @@ import fs from 'node:fs';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const BUILD = path.join(HERE, 'build');
 const APP = (process.argv[2] || 'http://localhost:8090').replace(/\/$/, '');
-const durations = JSON.parse(fs.readFileSync(path.join(BUILD, 'tts', 'durations.json')));
-const GAP = 0.4, TAIL = 0.6;
+// linha do tempo gerada por timing.py: as ações seguem os instantes em que cada trecho é falado
+const plan = JSON.parse(fs.readFileSync(path.join(BUILD, 'timing.json'))).scenes.find((s) => s.id === 'demo');
 
 const dir = path.join(BUILD, 'frames', 'demo');
 fs.rmSync(dir, { recursive: true, force: true });
@@ -93,18 +93,16 @@ await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 92, maxWidth: 
 await wait(300);
 const t0 = Date.now() / 1000;
 const beats = [];
-await wait(600);
+const until = async (sec) => { const left = t0 + sec - Date.now() / 1000; if (left > 0) await wait(left * 1000); };
 for (let i = 0; i < actions.length; i++) {
-  const start = Date.now() / 1000;
-  beats.push(start - t0);
+  await until(plan.beats[i]);
+  beats.push(Date.now() / 1000 - t0);
+  if (beats[i] - plan.beats[i] > 0.3) console.warn(`aviso: trecho ${i} começou ${(beats[i] - plan.beats[i]).toFixed(1)}s atrasado`);
   await page.evaluate((k) => window.setStep(k), i);
   try { await actions[i](); } catch (e) { await page.screenshot({ path: path.join(BUILD, `fail-${i}.png`) }); throw e; }
-  const target = start + durations[`demo-${i}`] + GAP;
-  const left = target - Date.now() / 1000;
-  if (left > 0) await wait(left * 1000);
 }
-await wait(TAIL * 1000);
-const length = Date.now() / 1000 - t0;
+await until(plan.length);
+const length = plan.length;
 // força um último quadro antes de parar
 await page.evaluate(() => window.setStep(6));
 await wait(200);
@@ -125,5 +123,4 @@ fs.writeFileSync(path.join(dir, 'list.txt'), lines.join('\n') + '\n');
 execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', path.join(dir, 'list.txt'),
   '-vf', 'fps=30,format=yuv420p', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-t', length.toFixed(3),
   path.join(BUILD, 'seg', 'demo.mp4')]);
-fs.writeFileSync(path.join(BUILD, 'timeline-demo.json'), JSON.stringify({ length, beats }));
 console.log(`demo: ${length.toFixed(1)}s, ${usable.length} quadros, trechos em ${beats.map((b) => b.toFixed(1)).join(', ')}`);

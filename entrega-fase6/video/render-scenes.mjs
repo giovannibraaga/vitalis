@@ -1,5 +1,5 @@
 // Renderiza as cenas animadas (todas exceto a demonstração) quadro a quadro, de forma determinística.
-// Saída: build/seg/<cena>.mp4 e build/timeline-<cena>.json
+// Saída: build/seg/<cena>.mp4 (rode antes: python3 timing.py)
 import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -8,9 +8,9 @@ import fs from 'node:fs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const BUILD = path.join(HERE, 'build');
-const FPS = 30, GAP = 0.2, LEAD = 0.4, TAIL = 0.6;
-const narration = JSON.parse(fs.readFileSync(path.join(HERE, 'narration.json')));
-const durations = JSON.parse(fs.readFileSync(path.join(BUILD, 'tts', 'durations.json')));
+const FPS = 30;
+// linha do tempo gerada por timing.py (tomada única da ElevenLabs ou trechos do Piper)
+const timing = JSON.parse(fs.readFileSync(path.join(BUILD, 'timing.json')));
 const only = process.argv[2];
 
 const browser = await chromium.launch();
@@ -19,12 +19,9 @@ await page.goto(pathToFileURL(path.join(HERE, 'scenes.html')).href);
 await page.evaluate(() => document.fonts.ready);
 fs.mkdirSync(path.join(BUILD, 'seg'), { recursive: true });
 
-for (const scene of narration.scenes) {
+for (const scene of timing.scenes) {
   if (scene.id === 'demo' || (only && scene.id !== only)) continue;
-  const beats = [];
-  let t = LEAD;
-  scene.beats.forEach((_, i) => { beats.push(t); t += durations[`${scene.id}-${i}`] + GAP; });
-  const length = t + TAIL + (scene.id === 'encerramento' ? 2.8 : 0);
+  const { beats, length } = scene;
 
   const dir = path.join(BUILD, 'frames', scene.id);
   fs.rmSync(dir, { recursive: true, force: true });
@@ -46,7 +43,6 @@ for (const scene of narration.scenes) {
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', path.join(dir, 'list.txt'),
     '-vf', `fps=${FPS},format=yuv420p`, '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-t', length.toFixed(3),
     path.join(BUILD, 'seg', `${scene.id}.mp4`)]);
-  fs.writeFileSync(path.join(BUILD, `timeline-${scene.id}.json`), JSON.stringify({ length, beats }));
   console.log(`${scene.id}: ${length.toFixed(1)}s, ${n} quadros únicos`);
 }
 await browser.close();
