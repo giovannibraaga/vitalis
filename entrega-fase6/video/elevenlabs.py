@@ -3,7 +3,7 @@ entonação e a emoção contínuas) e usa o alinhamento por caractere para desc
 trecho começa e termina dentro da tomada.
 
 Variáveis de ambiente:
-  ELEVENLABS_API_KEY   (obrigatória)
+  ELEVENLABS_API_KEY   (ou credencial cadastrada em "API credentials" do ambiente)
   ELEVENLABS_VOICE_ID  (opcional, padrão: Ngh50DOYwTlTknff8kRk, a voz escolhida pelo grupo)
   ELEVENLABS_MODEL     (opcional, padrão: eleven_v4)
 
@@ -34,7 +34,8 @@ ap.add_argument('--model', default=os.environ.get('ELEVENLABS_MODEL', 'eleven_v4
 ap.add_argument('--speed', type=float, default=None, help='0.7 a 1.2; use para caber em 5 minutos')
 ap.add_argument('--list-models', action='store_true')
 args = ap.parse_args()
-key = os.environ.get('ELEVENLABS_API_KEY') or sys.exit('Defina ELEVENLABS_API_KEY no ambiente.')
+# Sem a variável, a chave pode ser injetada pelo proxy do ambiente (seção "API credentials")
+key = os.environ.get('ELEVENLABS_API_KEY', 'injetada-pelo-proxy')
 
 if args.list_models:
     for m in call('GET', f'{API}/models', key):
