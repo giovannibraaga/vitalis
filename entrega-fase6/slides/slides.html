@@ -183,16 +183,17 @@
   .s9 .blob.b { width: 260px; height: 260px; background: var(--green-300); opacity: .3; right: 260px; top: -150px; }
   .s9 .head { display: flex; justify-content: space-between; align-items: flex-end; position: relative; }
   .s9 .head p { font: 400 26px/1.4 'Inter'; color: var(--muted); max-width: 560px; text-align: right; }
-  .s9 .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 72px; position: relative; }
-  .s9 .card { padding: 40px 34px; min-height: 520px; display: flex; flex-direction: column; }
-  .s9 .av { width: 112px; height: 112px; border-radius: 34px; background: var(--green-900); color: #EAF4EE; display: grid; place-items: center; font: 700 40px/1 'Poppins'; letter-spacing: .02em; position: relative; }
-  .s9 .av::after { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--green-300); right: 14px; top: 14px; }
-  .s9 .card h3 { font-size: 29px; margin-top: 34px; min-height: 70px; }
+  .s9 .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 56px; position: relative; }
+  .s9 .card { padding: 36px 34px; min-height: 540px; display: flex; flex-direction: column; }
+  .s9 .av { width: 150px; height: 150px; border-radius: 40px; padding: 6px; background: var(--green-100); position: relative; }
+  .s9 .av img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 34px; }
+  .s9 .av::after { content: ''; position: absolute; width: 22px; height: 22px; border-radius: 50%; background: var(--green-500); border: 4px solid var(--surface); right: 2px; top: 2px; }
+  .s9 .card h3 { font-size: 29px; margin-top: 30px; min-height: 70px; }
   .s9 .rm { margin-top: 14px; width: fit-content; font: 600 17px/1 'Inter'; letter-spacing: .08em; color: var(--green-700); background: var(--green-100); padding: 10px 16px; border-radius: 999px; }
   .s9 .role { display: flex; align-items: center; gap: 12px; margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line); min-height: 88px; font: 600 21px/1.25 'Inter'; color: var(--green-900); }
   .s9 .role .ic { font-size: 28px; color: var(--green-500); flex: none; }
   .s9 .card p { font-size: 19px; margin-top: 12px; }
-  .s9 .band { margin-top: 40px; background: var(--green-900); color: #EAF4EE; border-radius: 26px; padding: 26px 36px; display: flex; align-items: center; gap: 22px; position: relative; }
+  .s9 .band { margin-top: 32px; background: var(--green-900); color: #EAF4EE; border-radius: 26px; padding: 26px 36px; display: flex; align-items: center; gap: 22px; position: relative; }
   .s9 .band .ic { font-size: 40px; color: var(--green-300); }
   .s9 .band small { display: block; font: 600 16px/1 'Inter'; letter-spacing: .12em; text-transform: uppercase; color: var(--green-300); }
   .s9 .band a { display: block; font: 600 28px/1 'Poppins'; color: #fff; text-decoration: none; margin-top: 10px; }
@@ -496,28 +497,28 @@
   </div>
   <div class="team">
     <div class="card">
-      <div class="av">GB</div>
+      <div class="av"><img src="../assets/equipe/giovanni.jpg" alt="Giovanni Braga Bernardo"></div>
       <h3>Giovanni Braga Bernardo</h3>
       <div class="rm">RM550698</div>
       <div class="role"><span class="ic">dns</span>Arquitetura, backend e integrações</div>
       <p>Estrutura técnica, regras de negócio, integrações e modelagem.</p>
     </div>
     <div class="card">
-      <div class="av">RM</div>
+      <div class="av"><img src="../assets/equipe/renato.jpg" alt="Renato Milsoni"></div>
       <h3>Renato Milsoni</h3>
       <div class="rm">RM550317</div>
       <div class="role"><span class="ic">web</span>Front-end e automação</div>
       <p>Interfaces, estrutura web e apoio às automações do projeto.</p>
     </div>
     <div class="card">
-      <div class="av">VS</div>
+      <div class="av"><img src="../assets/equipe/victor.jpg" alt="Victor Espanhol H. Santos"></div>
       <h3>Victor Espanhol H. Santos</h3>
       <div class="rm">RM552532</div>
       <div class="role"><span class="ic">insights</span>Dados, BI/BA e Analytics</div>
       <p>Estratégia analítica, indicadores, dados e visão de desempenho.</p>
     </div>
     <div class="card">
-      <div class="av">TM</div>
+      <div class="av"><img src="../assets/equipe/thiago.jpg" alt="Thiago Farias Martins"></div>
       <h3>Thiago Farias Martins</h3>
       <div class="rm">RM98412</div>
       <div class="role"><span class="ic">hub</span>Consultor Power Platform</div>
