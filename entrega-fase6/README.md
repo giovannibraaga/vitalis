@@ -74,7 +74,7 @@ npx expo export -p web --output-dir /tmp/vitalis-web && npx serve -s /tmp/vitali
 # 2. Narração — escolha UMA opção
 cd entrega-fase6/video
 #  a) ElevenLabs, tomada única (requer ELEVENLABS_API_KEY e acesso a api.elevenlabs.io)
-python3 elevenlabs.py --voice SEU_VOICE_ID          # --list-models, --model, --speed 1.08
+python3 elevenlabs.py                                 # --list-models, --model, --speed 1.08
 #  b) Piper offline (modelo pt-br-edresson-low.onnx de https://github.com/rhasspy/piper/releases/tag/v0.0.2)
 python3 tts.py caminho/para/pt-br-edresson-low.onnx 0.8
 

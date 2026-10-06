@@ -4,7 +4,7 @@ trecho começa e termina dentro da tomada.
 
 Variáveis de ambiente:
   ELEVENLABS_API_KEY   (obrigatória)
-  ELEVENLABS_VOICE_ID  (obrigatória, ou passe --voice)
+  ELEVENLABS_VOICE_ID  (opcional, padrão: Ngh50DOYwTlTknff8kRk, a voz escolhida pelo grupo)
   ELEVENLABS_MODEL     (opcional, padrão: eleven_v4)
 
 Uso: python3 elevenlabs.py [--voice ID] [--model ID] [--speed 1.0] [--list-models]
@@ -29,7 +29,7 @@ def call(method, url, key, body=None):
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument('--voice', default=os.environ.get('ELEVENLABS_VOICE_ID'))
+ap.add_argument('--voice', default=os.environ.get('ELEVENLABS_VOICE_ID', 'Ngh50DOYwTlTknff8kRk'))
 ap.add_argument('--model', default=os.environ.get('ELEVENLABS_MODEL', 'eleven_v4'))
 ap.add_argument('--speed', type=float, default=None, help='0.7 a 1.2; use para caber em 5 minutos')
 ap.add_argument('--list-models', action='store_true')
