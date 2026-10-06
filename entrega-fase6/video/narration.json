@@ -1,5 +1,5 @@
 {
-  "voice_note": "Narração gerada por TTS offline (Piper, voz pt-BR edresson-low). Recomenda-se regravar com a voz do grupo.",
+  "voice_note": "Narração gerada pela ElevenLabs (eleven_v4, voz Ngh50DOYwTlTknff8kRk) em tomada única com elevenlabs.py; tts.py (Piper, offline) continua como alternativa.",
   "scenes": [
     {
       "id": "abertura",
