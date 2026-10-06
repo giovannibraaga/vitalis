@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Vitalis — Fase 6</title>
+<link rel="stylesheet" href="../assets/vitalis.css">
+<style>
+  @page { size: 1920px 1080px; margin: 0; }
+
+  /* 1 — Capa */
+  .s1 .blob.a { width: 980px; height: 980px; background: var(--green-100); right: -160px; top: -120px; }
+  .s1 .blob.b { width: 360px; height: 360px; background: var(--green-300); opacity: .35; right: 620px; bottom: -150px; }
+  .s1 .left { position: absolute; left: 120px; top: 0; bottom: 0; width: 860px; display: flex; flex-direction: column; justify-content: center; }
+  .s1 .brand { display: flex; align-items: center; gap: 22px; }
+  .s1 h1 { font: 700 168px/1 'Poppins'; letter-spacing: -0.04em; color: var(--green-900); margin-top: 40px; }
+  .s1 .sub { font: 400 36px/1.4 'Inter'; color: var(--muted); margin-top: 30px; max-width: 760px; }
+  .s1 .phase { margin-top: 56px; display: inline-flex; align-items: center; gap: 16px; padding: 18px 28px; border-radius: 999px; background: var(--green-900); color: #EAF4EE; font: 500 23px/1 'Inter'; width: fit-content; }
+  .s1 .phase .ic { font-size: 28px; color: var(--green-300); }
+  .s1 .phones { position: absolute; right: 150px; top: 116px; }
+  .s1 .phones .back { position: absolute; left: -250px; top: 90px; transform: scale(.86); transform-origin: top left; opacity: .96; }
+  .s1 .floating { position: absolute; background: #fff; border-radius: 22px; padding: 18px 22px; display: flex; gap: 14px; align-items: center; box-shadow: 0 20px 40px -20px rgba(14,59,46,.35); font: 600 20px/1.2 'Inter'; color: var(--green-900); }
+  .s1 .floating small { display: block; font: 500 15px/1.2 'Inter'; color: var(--muted); margin-top: 4px; }
+  .s1 .floating .ic { font-size: 30px; color: var(--green-500); }
+
+  /* 2 — MVP */
+  .s2 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 76px; }
+  .s2 .card { padding: 44px 38px; min-height: 360px; }
+  .s2 .card .icon-badge { width: 84px; height: 84px; font-size: 46px; border-radius: 24px; }
+  .s2 .card h3 { font-size: 32px; }
+  .s2 .card p { font-size: 23px; }
+  .s2 .card h3 { margin-top: 34px; }
+  .s2 .card .num { position: absolute; }
+  .s2 .bottom { margin-top: 64px; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 28px; }
+  .s2 .flow { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 28px; padding: 32px 34px; }
+  .s2 .step { flex: 1; text-align: center; padding: 28px 8px; border-radius: 18px; font: 600 23px/1 'Poppins'; color: var(--green-900); background: var(--green-50); }
+  .s2 .step.done { background: var(--green-100); }
+  .s2 .step.now { background: var(--green-900); color: #EAF4EE; }
+  .s2 .step small { display: block; font: 500 14px/1 'Inter'; letter-spacing: .1em; text-transform: uppercase; margin-top: 10px; color: var(--green-500); }
+  .s2 .step.now small { color: var(--green-300); }
+  .s2 .next { background: var(--green-900); border-radius: 28px; padding: 32px 38px; color: #EAF4EE; display: flex; flex-direction: column; justify-content: center; }
+  .s2 .next .label { color: var(--green-300); }
+  .s2 .next .items { font: 500 27px/1.5 'Poppins'; margin-top: 14px; }
+  .s2 .next .items span { color: var(--green-300); margin: 0 8px; }
+
+  /* 3 — LGPD */
+  .s3 .head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .s3 .dpo { background: var(--green-900); color: #EAF4EE; border-radius: 24px; padding: 26px 32px; display: flex; gap: 20px; align-items: center; margin-top: 10px; }
+  .s3 .dpo .ic { font-size: 44px; color: var(--green-300); }
+  .s3 .dpo small { display: block; font: 600 15px/1 'Inter'; letter-spacing: .12em; text-transform: uppercase; color: var(--green-300); }
+  .s3 .dpo strong { display: block; font: 600 28px/1.2 'Poppins'; margin-top: 8px; }
+  .s3 .cols { display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 26px; margin-top: 52px; min-height: 520px; }
+  .s3 .card { padding: 30px 32px; }
+  .s3 .colhead { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .s3 .colhead .n { font: 600 18px/1 'Poppins'; color: var(--green-500); }
+  .s3 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .s3 .chips { gap: 12px; }
+  .s3 .chips .chip { font-size: 20px; padding: 13px 18px; }
+  .s3 .chips .chip.health { background: var(--green-100); border-color: var(--green-300); }
+  .s3 .note { margin-top: 28px; padding: 16px 18px; border-radius: 16px; background: var(--amber-100); color: var(--amber-700); font: 500 18px/1.4 'Inter'; display: flex; gap: 12px; }
+  .s3 .note .ic { font-size: 26px; }
+  .s3 .basis { display: flex; flex-direction: column; gap: 26px; }
+  .s3 .basis div { border-left: 4px solid var(--green-300); padding: 6px 0 6px 18px; }
+  .s3 .basis div.key { border-color: var(--green-700); }
+  .s3 .basis b { font: 600 22px/1.2 'Inter'; color: var(--green-900); display: block; }
+  .s3 .basis span { font: 400 21px/1.35 'Inter'; color: var(--muted); display: block; margin-top: 4px; }
+  .s3 .basis em { font: 500 16px/1 'Inter'; font-style: normal; color: var(--green-500); }
+  .s3 .ctrls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .s3 .ctrl { display: flex; align-items: center; gap: 12px; padding: 18px 16px; border-radius: 14px; background: var(--green-50); font: 500 18px/1.2 'Inter'; color: var(--green-900); }
+  .s3 .ctrl .ic { font-size: 24px; color: var(--green-700); }
+  .s3 .rights { margin-top: 30px; display: flex; align-items: center; gap: 20px; padding: 20px 30px; border-radius: 22px; background: var(--sand); }
+  .s3 .rights p { font: 500 23px/1.3 'Inter'; color: var(--green-900); flex: 1; }
+  .s3 .rights .chip { font-size: 20px; padding: 13px 20px; }
+
+  /* 4 — Governança */
+  .s4 .head { display: flex; justify-content: space-between; align-items: flex-end; }
+  .s4 .iso { font: 600 20px/1 'Inter'; color: var(--green-700); background: var(--green-100); padding: 14px 22px; border-radius: 999px; }
+  .s4 .grid6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+  .s4 .card { padding: 30px 30px; min-height: 160px; display: flex; gap: 22px; align-items: flex-start; border-radius: 24px; }
+  .s4 .card .icon-badge { flex: none; width: 58px; height: 58px; font-size: 32px; }
+  .s4 .card h3 { font-size: 25px; }
+  .s4 .card p { font-size: 19px; margin-top: 6px; }
+  .s4 .cycle { margin-top: 44px; position: relative; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 90px; }
+  .s4 .node { border-radius: 26px; padding: 28px 32px; display: flex; gap: 22px; align-items: center; min-height: 150px; background: #fff; border: 2px solid var(--green-300); position: relative; z-index: 1; }
+  .s4 .node.mid { background: var(--green-900); border-color: var(--green-900); color: #EAF4EE; }
+  .s4 .node .ic { font-size: 48px; color: var(--green-500); flex: none; }
+  .s4 .node.mid .ic { color: var(--green-300); }
+  .s4 .node b { font: 700 26px/1 'Poppins'; letter-spacing: .06em; display: block; color: var(--green-900); }
+  .s4 .node.mid b { color: #fff; }
+  .s4 .node div span { font: 400 20px/1.35 'Inter'; color: var(--muted); display: block; margin-top: 8px; }
+  .s4 .node.mid div span { color: #BFD8CB; }
+  .s4 .cycle .link { position: absolute; top: 50%; transform: translateY(-50%); font-size: 46px; color: var(--green-500); z-index: 2; }
+  .s4 .return { margin: 0 calc(16.66% - 30px); height: 64px; border: 3px dashed var(--green-300); border-top: none; border-radius: 0 0 28px 28px; display: flex; align-items: flex-end; justify-content: center; gap: 12px; padding-bottom: 0; font: 600 18px/1 'Inter'; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); position: relative; }
+  .s4 .return { align-items: center; transform: translateY(0); }
+  .s4 .return .ic { display: none; }
+
+  /* 5 — Segurança */
+  .s5 .wrap { display: grid; grid-template-columns: 1fr 360px; gap: 30px; margin-top: 40px; }
+  .s5 table { width: 100%; border-collapse: separate; border-spacing: 0 9px; }
+  .s5 th { text-align: left; font: 600 16px/1 'Inter'; letter-spacing: .12em; text-transform: uppercase; color: var(--green-500); padding: 0 22px 4px; }
+  .s5 td { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 15px 22px; font: 400 19px/1.3 'Inter'; color: var(--muted); vertical-align: middle; }
+  .s5 td:first-child { border-left: 1px solid var(--line); border-radius: 16px 0 0 16px; font: 600 20px/1.25 'Inter'; color: var(--green-900); }
+  .s5 td:last-child { border-right: 1px solid var(--line); border-radius: 0 16px 16px 0; color: var(--ink); }
+  .s5 td .tag { font-size: 14.5px; white-space: nowrap; }
+  .s5 td.ctl { display: table-cell; }
+  .s5 td.ctl .ic { color: var(--green-500); font-size: 24px; vertical-align: -5px; margin-right: 10px; }
+  .s5 td.arr { width: 30px; padding: 15px 0; color: var(--green-300); }
+  .s5 .side { background: var(--green-900); color: #EAF4EE; border-radius: 28px; padding: 36px 34px; display: flex; flex-direction: column; margin-top: 30px; height: 690px; }
+  .s5 .side .ic.big { font-size: 56px; color: var(--green-300); }
+  .s5 .side h3 { font: 600 32px/1.15 'Poppins'; margin-top: 22px; }
+  .s5 .side p { font: 400 19px/1.45 'Inter'; color: #BFD8CB; margin-top: 12px; }
+  .s5 .side ul { list-style: none; margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+  .s5 .side li { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px; background: rgba(255,255,255,.07); font: 500 20px/1 'Inter'; }
+  .s5 .side li .ic { font-size: 24px; color: var(--green-300); }
+
+  /* 6 — Auditoria */
+  .s6 .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 60px; }
+  .s6 .w { position: relative; padding: 38px 38px; background: #fff; border: 1px solid var(--line); border-right: none; }
+  .s6 .w:first-child { border-radius: 26px 0 0 26px; }
+  .s6 .w:last-child { border-radius: 0 26px 26px 0; border-right: 1px solid var(--line); }
+  .s6 .w + .w::before { content: 'chevron_right'; font-family: 'Material Symbols Rounded'; font-feature-settings: 'liga'; position: absolute; left: -22px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: var(--green-900); color: #fff; display: grid; place-items: center; font-size: 30px; }
+  .s6 .w b { font: 700 30px/1 'Poppins'; color: var(--green-900); letter-spacing: .04em; display: flex; align-items: center; gap: 14px; }
+  .s6 .w b .ic { font-size: 36px; color: var(--green-500); }
+  .s6 .w span { display: block; font: 400 20px/1.4 'Inter'; color: var(--muted); margin-top: 12px; }
+  .s6 .mid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; margin-top: 36px; }
+  .s6 .events { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; margin-top: 24px; }
+  .s6 .ev { display: flex; align-items: center; gap: 14px; font: 500 20px/1.25 'Inter'; color: var(--ink); }
+  .s6 .ev .ic { font-size: 26px; color: var(--green-700); background: var(--green-100); width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; flex: none; }
+  .s6 .warn { background: var(--amber-100); border-radius: 26px; padding: 32px 34px; display: flex; flex-direction: column; justify-content: center; }
+  .s6 .warn .ic { font-size: 44px; color: var(--amber-700); }
+  .s6 .warn p { font: 500 25px/1.4 'Poppins'; color: #5E3E0D; margin-top: 16px; }
+  .s6 .loop { margin-top: 40px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .s6 .loop .chip { font: 600 23px/1 'Poppins'; padding: 22px 26px; flex: 1; justify-content: center; }
+  .s6 .loop .arrow { font-size: 30px; }
+
+  /* 7 — Crescimento */
+  .s7 .cols { display: grid; grid-template-columns: 470px 1fr 560px; gap: 28px; margin-top: 48px; height: 700px; }
+  .s7 .card { padding: 28px 30px; border-radius: 24px; }
+  .s7 .aud { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+  .s7 .aud div { display: flex; align-items: center; gap: 10px; padding: 18px 14px; border-radius: 14px; background: var(--green-50); font: 600 18px/1.2 'Inter'; color: var(--green-900); }
+  .s7 .aud .ic { font-size: 26px; color: var(--green-700); }
+  .s7 .channels { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .s7 .channels .chip { font-size: 18px; padding: 10px 15px; }
+  .s7 .channels .chip.future { border-style: dashed; color: var(--muted); }
+  .s7 .funnel { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 30px; }
+  .s7 .fs { height: 104px; border-radius: 20px; display: flex; align-items: center; justify-content: center; gap: 14px; font: 600 24px/1 'Poppins'; color: var(--green-900); }
+  .s7 .fs .ic { font-size: 30px; }
+  .s7 .fs:nth-child(1) { width: 100%; background: var(--green-50); }
+  .s7 .fs:nth-child(2) { width: 88%; background: var(--green-100); }
+  .s7 .fs:nth-child(3) { width: 76%; background: var(--green-300); }
+  .s7 .fs:nth-child(4) { width: 64%; background: var(--green-500); color: #fff; }
+  .s7 .fs:nth-child(5) { width: 52%; background: var(--green-900); color: #fff; }
+  .s7 .kw { display: flex; flex-direction: column; gap: 11px; margin-top: 16px; }
+  .s7 .kw div { display: flex; align-items: center; gap: 12px; padding: 13px 18px; border-radius: 999px; border: 1px solid var(--line); font: 500 18px/1 'Inter'; color: var(--ink); background: var(--bg); }
+  .s7 .kw .ic { font-size: 22px; color: var(--green-500); }
+  .s7 .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 16px; }
+  .s7 .kpis div { display: grid; place-items: center; min-height: 64px; text-align: center; padding: 10px 4px; border-radius: 14px; background: var(--green-900); color: #EAF4EE; font: 600 16px/1.1 'Inter'; }
+
+  /* 8 — Encerramento */
+  .s8 .blob.a { width: 900px; height: 900px; background: #154A3A; right: -260px; top: -300px; }
+  .s8 .blob.b { width: 420px; height: 420px; background: #1A5442; left: -160px; bottom: -220px; }
+  .s8 .inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 640px; gap: 70px; height: 900px; }
+  .s8 .brand { display: flex; align-items: center; gap: 20px; font: 600 26px/1 'Poppins'; letter-spacing: .2em; color: #CFE6D9; }
+  .s8 .brand .mark { background: #EAF4EE; color: var(--green-900); }
+  .s8 .brand .mark::after { background: var(--green-500); }
+  .s8 h1 { font: 600 76px/1.08 'Poppins'; letter-spacing: -0.025em; color: #fff; margin-top: 60px; }
+  .s8 .sub { font: 400 27px/1.45 'Inter'; color: #BFD8CB; margin-top: 28px; max-width: 900px; }
+  .s8 .pillars { display: flex; gap: 16px; margin-top: 52px; }
+  .s8 .pillar { flex: 1; padding: 24px 20px; border-radius: 22px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); display: flex; flex-direction: column; gap: 14px; font: 600 23px/1 'Poppins'; color: #fff; }
+  .s8 .pillar .ic { font-size: 38px; color: var(--green-300); }
+  .s8 .links { background: #F7F6F1; color: var(--ink); border-radius: 30px; padding: 40px 40px; align-self: center; }
+  .s8 .links .label { color: var(--green-500); }
+  .s8 .links h3 { font: 600 32px/1.15 'Poppins'; color: var(--green-900); margin-top: 12px; }
+  .s8 .lk { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .s8 .lk:last-of-type { border-bottom: none; }
+  .s8 .lk .ic { font-size: 30px; color: var(--green-700); margin-top: 2px; }
+  .s8 .lk small { display: block; font: 600 15px/1 'Inter'; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .s8 .lk a, .s8 .lk span.v { display: block; font: 500 20px/1.3 'Inter'; color: var(--green-900); text-decoration: none; margin-top: 6px; word-break: break-all; }
+  .s8 .lk.yt span.v { color: var(--red-700); font-weight: 600; }
+  .s8 .thanks { font: 600 44px/1 'Poppins'; color: #fff; margin-top: 54px; display: flex; align-items: center; gap: 18px; }
+  .s8 .thanks .ic { color: var(--green-300); font-size: 46px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== 1 ===================== -->
+<section class="slide s1">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="left">
+    <div class="brand"><div class="mark">V</div><span class="eyebrow" style="margin:0">Healthtech · FIAP</span></div>
+    <h1>Vitalis</h1>
+    <p class="sub">Tecnologia para uma rotina medicamentosa mais simples, organizada e segura.</p>
+    <div class="phase"><span class="ic">verified_user</span>Fase 6 — Governança, Segurança e Crescimento</div>
+  </div>
+  <div class="phones">
+    <div class="phone back"><div class="screen"><img src="../assets/img/app-monitoring.png" alt="Tela de monitoramento do app Vitalis"></div></div>
+    <div class="phone"><div class="screen"><img src="../assets/img/app-home.png" alt="Tela inicial do app Vitalis"></div></div>
+    <div class="floating" style="left:-330px; top:620px"><span class="ic">medication</span><div>Rotina medicamentosa<small>organizada em um só lugar</small></div></div>
+    <div class="floating" style="right:-90px; top:120px"><span class="ic">shield_lock</span><div>Privacidade<small>desde a concepção</small></div></div>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>Pitch acadêmico · Fase 6</span></div>
+</section>
+
+<!-- ===================== 2 ===================== -->
+<section class="slide s2">
+  <div class="eyebrow">Do MVP à maturidade</div>
+  <h2 class="title">Um MVP funcional. Agora, preparado para evoluir.</h2>
+  <div class="grid4">
+    <div class="card"><div class="icon-badge"><span class="ic">medication</span></div><h3>Medicamentos</h3><p>Cadastro e organização dos tratamentos.</p></div>
+    <div class="card"><div class="icon-badge"><span class="ic">calendar_month</span></div><h3>Agenda</h3><p>Horários e duração do tratamento.</p></div>
+    <div class="card"><div class="icon-badge"><span class="ic">task_alt</span></div><h3>Adesão</h3><p>Registro de doses e histórico.</p></div>
+    <div class="card"><div class="icon-badge"><span class="ic">forum</span></div><h3>IA HUB</h3><p>Interação conversacional com a plataforma.</p></div>
+  </div>
+  <div class="bottom">
+    <div class="flow">
+      <div class="step done">MVP<small>Concluído</small></div><span class="ic arrow">arrow_forward</span>
+      <div class="step done">Validação<small>Concluído</small></div><span class="ic arrow">arrow_forward</span>
+      <div class="step now">Governança<small>Fase atual</small></div><span class="ic arrow">arrow_forward</span>
+      <div class="step">Mercado<small>Próximo</small></div>
+    </div>
+    <div class="next">
+      <div class="label">Próxima etapa</div>
+      <div class="items">Segurança&nbsp;<span>•</span> Governança&nbsp;<span>•</span> LGPD&nbsp;<span>•</span> Auditoria&nbsp;<span>•</span> Escalabilidade</div>
+    </div>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>02 / 08</span></div>
+</section>
+
+<!-- ===================== 3 ===================== -->
+<section class="slide s3">
+  <div class="head">
+    <div>
+      <div class="eyebrow">LGPD desde a concepção</div>
+      <h2 class="title">Privacidade e proteção de dados</h2>
+    </div>
+    <div class="dpo"><span class="ic">badge</span><div><small>Responsável pela proteção de dados</small><strong>Victor Espanhol H. Santos</strong></div></div>
+  </div>
+  <div class="cols">
+    <div class="card">
+      <div class="colhead"><div class="icon-badge"><span class="ic">database</span></div><div><div class="n">01</div><h3>Dados tratados</h3></div></div>
+      <div class="chips">
+        <span class="chip">Nome e e-mail</span>
+        <span class="chip health">Medicamentos</span>
+        <span class="chip health">Dosagens</span>
+        <span class="chip health">Horários</span>
+        <span class="chip health">Histórico de adesão</span>
+        <span class="chip">Interações com IA HUB</span>
+        <span class="chip">Logs técnicos</span>
+      </div>
+      <div class="note"><span class="ic">health_and_safety</span><span>Medicamentos e histórico podem constituir <b>dados pessoais sensíveis</b> relacionados à saúde.</span></div>
+    </div>
+    <div class="card">
+      <div class="colhead"><div class="icon-badge"><span class="ic">gavel</span></div><div><div class="n">02</div><h3>Bases legais</h3></div></div>
+      <div class="basis">
+        <div><b>Conta</b><span>Execução de contrato / procedimentos preliminares</span><em>LGPD, art. 7º, V</em></div>
+        <div class="key"><b>Dados de saúde</b><span>Consentimento específico e destacado</span><em>LGPD, art. 11, I</em></div>
+        <div><b>Logs de segurança</b><span>Legítimo interesse, quando aplicável</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="colhead"><div class="icon-badge"><span class="ic">shield_lock</span></div><div><div class="n">03</div><h3>Proteção</h3></div></div>
+      <div class="ctrls">
+        <div class="ctrl"><span class="ic">key</span>Supabase Auth</div>
+        <div class="ctrl"><span class="ic">table_rows</span>Row Level Security</div>
+        <div class="ctrl"><span class="ic">lock</span>HTTPS</div>
+        <div class="ctrl"><span class="ic">settings</span>Variáveis de ambiente</div>
+        <div class="ctrl"><span class="ic">backup</span>Backups</div>
+        <div class="ctrl"><span class="ic">person_check</span>Menor privilégio</div>
+        <div class="ctrl" style="grid-column: span 2"><span class="ic">receipt_long</span>Logs de auditoria</div>
+      </div>
+    </div>
+  </div>
+  <div class="rights">
+    <span class="ic" style="font-size:36px;color:var(--green-700)">person_shield</span>
+    <p>Titulares poderão solicitar:</p>
+    <span class="chip">Acesso</span><span class="chip">Correção</span><span class="chip">Exclusão</span><span class="chip solid">Revogação do consentimento</span>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>03 / 08</span></div>
+</section>
+
+<!-- ===================== 4 ===================== -->
+<section class="slide s4">
+  <div class="head">
+    <div>
+      <div class="eyebrow">Governança de TI</div>
+      <h2 class="title">Tecnologia alinhada ao negócio</h2>
+    </div>
+    <span class="iso">Referência: ISO/IEC 38500</span>
+  </div>
+  <div class="grid6">
+    <div class="card"><div class="icon-badge"><span class="ic">assignment_ind</span></div><div><h3>Responsabilidade</h3><p>Responsáveis definidos por tecnologia, dados e segurança.</p></div></div>
+    <div class="card"><div class="icon-badge"><span class="ic">flag</span></div><div><h3>Estratégia</h3><p>Tecnologia apoiando estabilidade, segurança, experiência e crescimento.</p></div></div>
+    <div class="card"><div class="icon-badge"><span class="ic">handshake</span></div><div><h3>Aquisição</h3><p>Custo, segurança, disponibilidade e dependência de fornecedores.</p></div></div>
+    <div class="card"><div class="icon-badge"><span class="ic">speed</span></div><div><h3>Desempenho</h3><p>Disponibilidade, erros, integrações e funcionalidades críticas.</p></div></div>
+    <div class="card"><div class="icon-badge"><span class="ic">rule</span></div><div><h3>Conformidade</h3><p>LGPD, segurança e controle de acesso.</p></div></div>
+    <div class="card"><div class="icon-badge"><span class="ic">accessibility_new</span></div><div><h3>Comportamento humano</h3><p>Experiência simples e acessível, especialmente para idosos e cuidadores.</p></div></div>
+  </div>
+  <div class="cycle">
+    <div class="node"><span class="ic">search_insights</span><div><b>AVALIAR</b><span>Riscos, custos, desempenho e necessidades.</span></div></div>
+    <div class="node mid"><span class="ic">alt_route</span><div><b>DIRIGIR</b><span>Definir prioridades e ações.</span></div></div>
+    <div class="node"><span class="ic">monitoring</span><div><b>MONITORAR</b><span>Indicadores, erros, incidentes e desempenho.</span></div></div>
+    <span class="ic link" style="left: calc(33.33% - 8px)">arrow_forward</span>
+    <span class="ic link" style="left: calc(66.66% - 38px)">arrow_forward</span>
+  </div>
+  <div class="return"><span class="ic">subdirectory_arrow_left</span>Avaliar novamente — ciclo contínuo<span class="ic">replay</span></div>
+  <div class="foot"><b>VITALIS</b><span>04 / 08</span></div>
+</section>
+
+<!-- ===================== 5 ===================== -->
+<section class="slide s5">
+  <div class="eyebrow">Segurança por design</div>
+  <h2 class="title">Riscos identificados. Controles definidos.</h2>
+  <div class="wrap">
+    <table>
+      <thead><tr><th>Risco</th><th>OWASP Top 10</th><th></th><th>Controle</th></tr></thead>
+      <tbody>
+        <tr><td>Acesso indevido</td><td><span class="tag red">A01 · Broken Access Control</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">shield_lock</span>Supabase Auth + Row Level Security</td></tr>
+        <tr><td>Falhas de autenticação</td><td><span class="tag red">A07 · Identification and Authentication Failures</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">key</span>Autenticação individual e sessão segura</td></tr>
+        <tr><td>Configuração incorreta</td><td><span class="tag red">A05 · Security Misconfiguration</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">fact_check</span>Revisão periódica de políticas RLS e permissões</td></tr>
+        <tr><td>Entradas maliciosas</td><td><span class="tag red">A03 · Injection</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">filter_alt</span>Validação e sanitização das entradas</td></tr>
+        <tr><td>Exposição de credenciais</td><td><span class="tag red">A02 / A05</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">key_off</span>Secrets em variáveis de ambiente, nunca no GitHub</td></tr>
+        <tr><td>Dependências vulneráveis</td><td><span class="tag red">A06 · Vulnerable and Outdated Components</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">update</span>Atualização e análise periódica</td></tr>
+        <tr><td>Falhas de monitoramento</td><td><span class="tag red">A09 · Security Logging and Monitoring Failures</span></td><td class="arr"><span class="ic">arrow_forward</span></td><td class="ctl"><span class="ic">monitor_heart</span>Logs e monitoramento de eventos críticos</td></tr>
+      </tbody>
+    </table>
+    <div class="side">
+      <span class="ic big">verified_user</span>
+      <h3>ISO 27001<br>ISO 27002</h3>
+      <p>As medidas seguem os princípios da família ISO 27000.</p>
+      <ul>
+        <li><span class="ic">lock_person</span>Controle de acesso</li>
+        <li><span class="ic">bug_report</span>Vulnerabilidades</li>
+        <li><span class="ic">emergency</span>Incidentes</li>
+        <li><span class="ic">receipt_long</span>Logs</li>
+        <li><span class="ic">backup</span>Continuidade</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>05 / 08</span></div>
+</section>
+
+<!-- ===================== 6 ===================== -->
+<section class="slide s6">
+  <div class="eyebrow">Auditoria e confiabilidade</div>
+  <h2 class="title">Toda ação importante deve ser rastreável</h2>
+  <div class="flow">
+    <div class="w"><b><span class="ic">person</span>QUEM</b><span>Identificação do responsável pela ação.</span></div>
+    <div class="w"><b><span class="ic">schedule</span>QUANDO</b><span>Timestamp.</span></div>
+    <div class="w"><b><span class="ic">description</span>O QUÊ</b><span>Recurso ou informação afetada.</span></div>
+    <div class="w"><b><span class="ic">receipt_long</span>COMO</b><span>Logs e eventos registrados.</span></div>
+  </div>
+  <div class="mid">
+    <div class="card">
+      <div class="label">Eventos importantes</div>
+      <div class="events">
+        <div class="ev"><span class="ic">login</span>Autenticações</div>
+        <div class="ev"><span class="ic">gpp_maybe</span>Tentativas de acesso</div>
+        <div class="ev"><span class="ic">edit_note</span>Inclusão, alteração e exclusão</div>
+        <div class="ev"><span class="ic">medication</span>Eventos relacionados às doses</div>
+        <div class="ev"><span class="ic">admin_panel_settings</span>Alterações administrativas</div>
+        <div class="ev"><span class="ic">error</span>Erros da aplicação</div>
+        <div class="ev"><span class="ic">emergency</span>Incidentes de segurança</div>
+      </div>
+    </div>
+    <div class="warn">
+      <span class="ic">visibility_off</span>
+      <p>Os logs não devem armazenar desnecessariamente medicamentos, informações de saúde ou credenciais.</p>
+    </div>
+  </div>
+  <div class="loop">
+    <span class="chip soft">Prevenir</span><span class="ic arrow">arrow_forward</span>
+    <span class="chip soft">Detectar</span><span class="ic arrow">arrow_forward</span>
+    <span class="chip soft">Investigar</span><span class="ic arrow">arrow_forward</span>
+    <span class="chip soft">Corrigir</span><span class="ic arrow">arrow_forward</span>
+    <span class="chip solid">Melhorar</span>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>06 / 08</span></div>
+</section>
+
+<!-- ===================== 7 ===================== -->
+<section class="slide s7">
+  <div class="eyebrow">Crescimento e aquisição</div>
+  <h2 class="title">Como a Vitalis pretende chegar aos usuários</h2>
+  <div class="cols">
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <div class="card">
+        <div class="label">Público inicial</div>
+        <div class="aud">
+          <div><span class="ic">ecg_heart</span>Pacientes crônicos</div>
+          <div><span class="ic">elderly</span>Idosos</div>
+          <div><span class="ic">family_restroom</span>Familiares</div>
+          <div><span class="ic">volunteer_activism</span>Cuidadores</div>
+        </div>
+      </div>
+      <div class="card" style="flex:1">
+        <div class="label">Canais</div>
+        <div class="channels">
+          <span class="chip"><span class="ic">search</span>Google</span>
+          <span class="chip"><span class="ic">photo_camera</span>Instagram</span>
+          <span class="chip"><span class="ic">thumb_up</span>Facebook</span>
+          <span class="chip"><span class="ic">menu_book</span>Conteúdo educativo</span>
+          <span class="chip"><span class="ic">storefront</span>App Stores</span>
+          <span class="chip"><span class="ic">share</span>Indicação</span>
+          <span class="chip future"><span class="ic">add_business</span>Futuro: clínicas, farmácias e home care</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">Funil de aquisição</div>
+      <div class="funnel">
+        <div class="fs"><span class="ic">campaign</span>Conteúdo / Anúncio</div>
+        <div class="fs"><span class="ic">language</span>Site Vitalis</div>
+        <div class="fs"><span class="ic">person_add</span>Cadastro gratuito</div>
+        <div class="fs"><span class="ic">autorenew</span>Uso recorrente</div>
+        <div class="fs"><span class="ic">workspace_premium</span>Premium</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px">
+      <div class="card">
+        <div class="label">SEO · palavras-chave</div>
+        <div class="kw">
+          <div><span class="ic">search</span>aplicativo para lembrar remédio</div>
+          <div><span class="ic">search</span>lembrete de medicamentos</div>
+          <div><span class="ic">search</span>controle de medicamentos</div>
+          <div><span class="ic">search</span>rotina de medicamentos</div>
+          <div><span class="ic">search</span>adesão medicamentosa</div>
+        </div>
+      </div>
+      <div class="card" style="flex:1">
+        <div class="label">KPIs</div>
+        <div class="kpis">
+          <div>Tráfego</div><div>CTR</div><div>Cadastros</div><div>Conversão</div>
+          <div>CAC</div><div>Retenção</div><div>Churn</div><div>Usuários ativos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>07 / 08</span></div>
+</section>
+
+<!-- ===================== 8 ===================== -->
+<section class="slide dark s8">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="inner">
+    <div style="display:flex; flex-direction:column; justify-content:center">
+      <div class="brand"><div class="mark">V</div>VITALIS</div>
+      <h1>Da organização de medicamentos à confiança digital.</h1>
+      <p class="sub">Uma plataforma que evolui não apenas em funcionalidades, mas também em segurança, privacidade e governança.</p>
+      <div class="pillars">
+        <div class="pillar"><span class="ic">favorite</span>Experiência</div>
+        <div class="pillar"><span class="ic">shield_lock</span>Segurança</div>
+        <div class="pillar"><span class="ic">account_tree</span>Governança</div>
+        <div class="pillar"><span class="ic">trending_up</span>Crescimento</div>
+      </div>
+      <div class="thanks"><span class="ic">waving_hand</span>Obrigado.</div>
+    </div>
+    <div class="links">
+      <div class="label">Demonstração da solução</div>
+      <h3>Acesse a Vitalis</h3>
+      <div class="lk" style="margin-top:14px"><span class="ic">language</span><div><small>Website</small><a href="https://vitalis-website-main.vercel.app/">https://vitalis-website-main.vercel.app/</a></div></div>
+      <div class="lk"><span class="ic">smartphone</span><div><small>GitHub Mobile</small><a href="https://github.com/EspanholHS/vitalis-mobile">https://github.com/EspanholHS/vitalis-mobile</a></div></div>
+      <div class="lk"><span class="ic">code</span><div><small>GitHub Website</small><a href="https://github.com/EspanholHS/vitalis-website">https://github.com/EspanholHS/vitalis-website</a></div></div>
+      <div class="lk yt"><span class="ic">smart_display</span><div><small>Vídeo</small><span class="v" id="video-link">[INSERIR LINK DO YOUTUBE APÓS PUBLICAÇÃO]</span></div></div>
+    </div>
+  </div>
+  <div class="foot"><b>VITALIS</b><span>08 / 08</span></div>
+</section>
+
+<script>
+  // Permite gerar o PDF com o link do vídeo: slides.html?video=https://youtu.be/...
+  const v = new URLSearchParams(location.search).get('video');
+  if (v && /^https:\/\//.test(v)) {
+    const el = document.getElementById('video-link'), a = document.createElement('a');
+    a.href = v; a.textContent = v; a.style.color = 'inherit';
+    el.replaceChildren(a); el.closest('.lk').classList.remove('yt');
+  }
+</script>
+</body>
+</html>

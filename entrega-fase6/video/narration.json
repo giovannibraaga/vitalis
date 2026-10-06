@@ -1,0 +1,74 @@
+{
+  "voice_note": "Narração gerada por TTS offline (Piper, voz pt-BR edresson-low). Recomenda-se regravar com a voz do grupo.",
+  "scenes": [
+    {
+      "id": "abertura",
+      "beats": [
+        "Gerenciar medicamentos parece uma tarefa simples, mas, para quem possui diferentes tratamentos, horários e dosagens, manter a rotina organizada pode se tornar um desafio.",
+        "A Vitalis nasceu para simplificar esse processo por meio da tecnologia."
+      ]
+    },
+    {
+      "id": "mvp",
+      "beats": [
+        "Nosso MVP já permite organizar a rotina medicamentosa por meio do cadastro de medicamentos, dosagens e horários.",
+        "O usuário pode acompanhar doses tomadas ou ignoradas, consultar seu histórico e indicadores de adesão e interagir com a plataforma pelo IA HUB.",
+        "Nesta fase, o desafio deixou de ser apenas desenvolver funcionalidades. Nosso objetivo passou a ser preparar a Vitalis para um cenário mais próximo do mercado."
+      ]
+    },
+    {
+      "id": "lgpd",
+      "beats": [
+        "Por lidar com informações que podem revelar dados relacionados à saúde, privacidade é uma preocupação central da Vitalis. Cada dado coletado possui uma finalidade definida.",
+        "Nome e e-mail são utilizados para identificação da conta. Medicamentos, dosagens, horários e histórico permitem organizar e acompanhar o tratamento.",
+        "Para dados relacionados à saúde, adotamos como base o consentimento específico e destacado do usuário.",
+        "Também planejamos mecanismos para que o titular possa acessar, corrigir ou excluir suas informações e revogar seu consentimento.",
+        "Entre os controles previstos estão autenticação individual, Row Level Security, comunicação HTTPS, proteção de credenciais, backups, registros para auditoria e princípio do menor privilégio."
+      ]
+    },
+    {
+      "id": "governanca",
+      "beats": [
+        "Para orientar a evolução tecnológica da Vitalis, utilizamos os princípios da ISO IEC 38500.",
+        "Isso significa definir responsabilidades claras, garantir que a tecnologia esteja alinhada à estratégia da startup, avaliar fornecedores e custos, monitorar desempenho, manter conformidade e considerar o comportamento humano nas decisões de tecnologia.",
+        "O modelo é contínuo: avaliamos necessidades e riscos, direcionamos as ações necessárias e monitoramos seus resultados."
+      ]
+    },
+    {
+      "id": "seguranca",
+      "beats": [
+        "Também analisamos a Vitalis utilizando conceitos do OWASP Top 10.",
+        "Entre os principais riscos estão acessos indevidos, falhas de autenticação, políticas incorretas de Row Level Security, entradas maliciosas, exposição de credenciais, dependências vulneráveis e ausência de logs suficientes.",
+        "Para reduzir esses riscos, utilizamos controles de acesso, validação de entradas, proteção de segredos, atualização das dependências, HTTPS e registros de eventos críticos.",
+        "Essas práticas também se relacionam aos princípios das normas ISO 27001 e 27002."
+      ]
+    },
+    {
+      "id": "aquisicao",
+      "beats": [
+        "Para a aquisição inicial de usuários, a estratégia da Vitalis será principalmente digital. O público inicial inclui pacientes crônicos, idosos, familiares e cuidadores.",
+        "A estratégia combina SEO, conteúdo educativo, mídias sociais e campanhas digitais, levando o usuário até o cadastro gratuito e, posteriormente, a uma possível assinatura Premium."
+      ]
+    },
+    {
+      "id": "demo",
+      "beats": [
+        "Agora podemos visualizar a Vitalis funcionando, nesta gravação real do MVP em execução.",
+        "Na tela inicial, o usuário vê um resumo da rotina e pode criar uma conta ou entrar na plataforma.",
+        "Após o acesso, a agenda do dia reúne o próximo horário, os medicamentos ativos, as doses confirmadas e os atrasos.",
+        "No cadastro de medicamento, o usuário informa nome, dosagem, horário de início e periodicidade, e a Vitalis calcula automaticamente as próximas tomas.",
+        "Na aba de monitoramento, acompanhamos a adesão média, as doses em atraso e as confirmações por dia.",
+        "O histórico registra doses confirmadas, esquecimentos e alterações da rotina, e a análise destaca os pontos críticos de adesão.",
+        "Dessa forma, buscamos reduzir a complexidade da organização dos medicamentos e concentrar as principais informações da rotina em uma única experiência."
+      ]
+    },
+    {
+      "id": "encerramento",
+      "beats": [
+        "A Vitalis começou como uma solução para organização da rotina medicamentosa e agora evolui também em segurança, privacidade, governança e confiabilidade.",
+        "Nosso objetivo é construir uma plataforma que seja simples para o usuário e, ao mesmo tempo, preparada para crescer de forma responsável.",
+        "Essa é a Vitalis."
+      ]
+    }
+  ]
+}

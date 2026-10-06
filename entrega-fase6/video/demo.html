@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Vitalis — demonstração</title>
+<link rel="stylesheet" href="../assets/vitalis.css">
+<style>
+  body { width: 1920px; height: 1080px; overflow: hidden; position: relative; }
+  .bgc { position: absolute; border-radius: 50%; background: var(--green-100); }
+  .left { position: absolute; left: 140px; top: 120px; width: 900px; }
+  .live { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 999px; background: var(--green-900); color: #EAF4EE; font: 600 19px/1 'Inter'; letter-spacing: .08em; text-transform: uppercase; }
+  .live i { width: 12px; height: 12px; border-radius: 50%; background: #E0584B; display: inline-block; }
+  h2 { font: 600 66px/1.1 'Poppins'; color: var(--green-900); letter-spacing: -0.02em; margin-top: 30px; }
+  ol { list-style: none; margin-top: 46px; display: flex; flex-direction: column; gap: 12px; }
+  li { display: flex; align-items: center; gap: 20px; padding: 16px 22px; border-radius: 18px; font: 500 25px/1.2 'Inter'; color: #9AA39E; transition: all .35s ease; }
+  li .n { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--sand); font: 600 18px/1 'Poppins'; color: #9AA39E; transition: all .35s ease; flex: none; }
+  li.done { color: var(--green-700); }
+  li.done .n { background: var(--green-100); color: var(--green-700); }
+  li.on { background: #fff; color: var(--green-900); font-weight: 600; box-shadow: 0 16px 34px -22px rgba(14,59,46,.45); }
+  li.on .n { background: var(--green-900); color: #fff; }
+  .note { position: absolute; left: 140px; bottom: 56px; font: 500 18px/1.4 'Inter'; color: #8C9590; display: flex; gap: 10px; align-items: center; }
+  .note .ic { font-size: 22px; color: var(--green-500); }
+  .phone { position: absolute; right: 230px; top: 50%; transform: translateY(-50%); width: 465px; height: 973px; padding: 14px; border-radius: 64px; }
+  .phone .screen { border-radius: 52px; padding-top: 44px; position: relative; }
+  .phone .viewport { width: 390px; height: 804px; transform: scale(1.12); transform-origin: top left; }
+  .phone iframe { width: 390px; height: 804px; border: 0; display: block; background: #F4F8FF; }
+  .tap { position: absolute; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: rgba(29, 95, 72, .28); border: 3px solid rgba(29, 95, 72, .75); pointer-events: none; opacity: 0; z-index: 10; }
+  .tap.go { animation: tap .6s ease-out; }
+  @keyframes tap { 0% { opacity: 1; transform: scale(.6); } 60% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(1.35); } }
+</style>
+</head>
+<body>
+  <div class="bgc" style="width:880px;height:880px;right:-60px;top:100px"></div>
+  <div class="bgc" style="width:300px;height:300px;right:760px;top:-120px;background:#D3E8DB"></div>
+  <div class="left">
+    <span class="live"><i></i>Demonstração real</span>
+    <h2>A Vitalis em execução</h2>
+    <ol id="steps">
+      <li><span class="n">1</span>Abertura do aplicativo</li>
+      <li><span class="n">2</span>Tela inicial e acesso</li>
+      <li><span class="n">3</span>Agenda do dia</li>
+      <li><span class="n">4</span>Cadastro de medicamento</li>
+      <li><span class="n">5</span>Monitoramento da adesão</li>
+      <li><span class="n">6</span>Histórico e análise</li>
+      <li><span class="n">7</span>Tudo em uma única experiência</li>
+    </ol>
+  </div>
+  <div class="note"><span class="ic">videocam</span>Gravação de tela do MVP (React Native · Expo, versão web) — dados de exemplo do protótipo</div>
+  <div class="phone"><div class="screen"><div class="viewport"><iframe id="app" title="Vitalis" src="about:blank"></iframe></div></div></div>
+  <div class="tap" id="tap"></div>
+<script>
+  window.setStep = (i) => document.querySelectorAll('#steps li').forEach((li, k) => {
+    li.classList.toggle('on', k === i); li.classList.toggle('done', k < i);
+  });
+  window.tap = (x, y) => {
+    const t = document.getElementById('tap');
+    t.style.left = x + 'px'; t.style.top = y + 'px';
+    t.classList.remove('go'); void t.offsetWidth; t.classList.add('go');
+  };
+</script>
+</body>
+</html>
