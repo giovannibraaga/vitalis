@@ -4,7 +4,7 @@ Material de apoio ao pitch da Fase 6 (Governança, Segurança e Crescimento).
 
 | Arquivo | O que é |
 |---|---|
-| `Vitalis_Fase6_Slides.pdf` | Apresentação, 8 slides 16:9 (1920×1080) |
+| `Vitalis_Fase6_Slides.pdf` | Apresentação, 9 slides 16:9 (1920×1080), com o link do vídeo e o slide da equipe |
 | `Vitalis_Fase6_Video.mp4` | Vídeo do pitch, **4:47**, Full HD, H.264 + AAC, pronto para o YouTube (não listado) |
 | `Vitalis_Fase6_Narracao.mp3` | Só a narração (ElevenLabs, tomada única), sem trilha |
 | `Vitalis_Fase6_Video.srt` | Legendas em pt-BR (podem ser enviadas ao YouTube) |
@@ -57,12 +57,12 @@ Os dados que aparecem são os dados de exemplo do protótipo, e o vídeo informa
 
 ## Antes de entregar
 
-1. Publique o vídeo no YouTube como **não listado**.
-2. Gere o PDF dos slides com o link do vídeo no slide 8:
+1. O vídeo está publicado no YouTube (não listado): https://youtu.be/sQ8wqU80M2k. O link já aparece nos slides 8 e 9.
+2. Acrescente o mesmo link no documento (PDF da documentação).
+3. Se o vídeo for republicado, gere o PDF com o novo link:
    ```bash
-   cd entrega-fase6/slides && node build-slides.mjs "https://youtu.be/SEU_LINK"
+   cd entrega-fase6/slides && node build-slides.mjs "https://youtu.be/NOVO_LINK"
    ```
-3. Acrescente o mesmo link no documento (PDF da documentação).
 
 ## Como regerar
 
