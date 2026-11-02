@@ -6,8 +6,8 @@ import path from 'node:path';
 import { fullText, VOICE_ID, MODEL_ID } from './script.mjs';
 
 export async function synthesize(outDir) {
-  const key = process.env.ELEVENLABS_API_KEY;
-  if (!key) throw new Error('Defina ELEVENLABS_API_KEY para gerar a narração.');
+  const key = process.env.ELEVENLABS_API_KEY || process.env.ELEVEN_LABS_API_KEY;
+  if (!key) throw new Error('Defina ELEVENLABS_API_KEY (ou ELEVEN_LABS_API_KEY) para gerar a narração.');
 
   const text = fullText();
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/with-timestamps?output_format=mp3_44100_128`;

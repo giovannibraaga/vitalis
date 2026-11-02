@@ -37,10 +37,25 @@ try {
   // 2. Narração one shot
   let alignment = null;
   const audio = path.join(out, 'narration.mp3');
+  let audioFinal = audio;
   if (!preview) {
     if (args.has('--reuse-audio') && fs.existsSync(audio)) log('reaproveitando narração existente');
     else { log('gerando narração no ElevenLabs (uma única requisição)...'); await synthesize(out); }
     alignment = JSON.parse(fs.readFileSync(path.join(out, 'alignment.json'), 'utf8')).alignment;
+
+    // Limite de 5 min: se a fala passar de MAX_AUDIO, acelera levemente o
+    // MESMO áudio (atempo preserva o tom) e reescala os timestamps, sem nova
+    // requisição ao ElevenLabs.
+    const MAX_AUDIO = 288;
+    const dur = Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', audio]).toString());
+    const tempo = dur > MAX_AUDIO ? dur / MAX_AUDIO : 1;
+    if (tempo > 1) {
+      log(`narração com ${dur.toFixed(1)} s; acelerando ${((tempo - 1) * 100).toFixed(1)}% para caber em 5 min`);
+      const fast = path.join(out, 'narration_final.mp3');
+      execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', audio, '-af', `atempo=${tempo.toFixed(5)}`, '-b:a', '192k', fast]);
+      for (const k of ['character_start_times_seconds', 'character_end_times_seconds']) alignment[k] = alignment[k].map((t) => t / tempo);
+      audioFinal = fast;
+    }
   }
 
   // 3. Linha do tempo
@@ -80,7 +95,7 @@ try {
   const ff = ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', listFile];
   if (!preview) {
     const ms = Math.round(timeline.lead * 1000);
-    ff.push('-i', audio, '-filter_complex', `[1:a]adelay=${ms}|${ms},apad[a]`, '-map', '0:v', '-map', '[a]', '-c:a', 'aac', '-b:a', '192k');
+    ff.push('-i', audioFinal, '-filter_complex', `[1:a]adelay=${ms}|${ms},apad[a]`, '-map', '0:v', '-map', '[a]', '-c:a', 'aac', '-b:a', '192k');
   }
   ff.push('-vf', 'fps=30,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', '18',
     '-movflags', '+faststart', '-t', timeline.total.toFixed(2), final);
