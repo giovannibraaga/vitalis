@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Vitalis · Fase 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="stage.css">
+</head>
+<body>
+<div id="stage">
+  <div class="bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
+
+  <header id="chrome">
+    <div class="brand"><span class="logo">V</span><span>Vitalis</span></div>
+    <div id="chapter"></div>
+  </header>
+
+  <!-- 1. ABERTURA -->
+  <section class="scene" id="s-intro" data-chapter="Startup One · Fase 7">
+    <div class="intro">
+      <div class="logo big">V</div>
+      <p class="eyebrow">FIAP · Sistemas de Informação · Startup One — Fase 7</p>
+      <h1 class="display">Vitalis</h1>
+      <h2 class="lead">Plano de lançamento e estratégia de crescimento</h2>
+      <div class="team" data-cue="team">
+        <div><b>Giovanni Braga Bernardo</b><span>RM550698</span></div>
+        <div><b>Renato Milsoni</b><span>RM550317</span></div>
+        <div><b>Victor Espanhol H. Santos</b><span>RM552532</span></div>
+      </div>
+      <div class="agenda" data-cue="agenda">
+        <span>Solução</span><i>→</i><span>Sistema rodando</span><i>→</i><span>Lançamento</span><i>→</i><span>Mídia digital</span><i>→</i><span>Segurança</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROBLEMA / SOLUÇÃO -->
+  <section class="scene" id="s-problem" data-chapter="A solução">
+    <div class="split">
+      <div class="col">
+        <p class="eyebrow blue">O problema</p>
+        <h2 class="display md" data-cue="quote">O cuidado não pode depender da&nbsp;memória.</h2>
+        <div class="audience" data-cue="audience">
+          <span>Pacientes crônicos</span><span>Idosos</span><span>Familiares</span><span>Cuidadores</span>
+        </div>
+        <p class="body">Vários medicamentos, doses e horários se confundem no dia a dia — e esquecer uma dose tem consequência.</p>
+      </div>
+      <div class="col">
+        <p class="eyebrow blue">A Vitalis organiza</p>
+        <ul class="features">
+          <li data-cue="f1"><span class="ic">💊</span><div><b>Cadastro de medicamentos</b><small>dosagem, horários e observações</small></div></li>
+          <li data-cue="f2"><span class="ic">🗓️</span><div><b>Agenda diária</b><small>próxima dose sempre visível</small></div></li>
+          <li data-cue="f3"><span class="ic">✅</span><div><b>Confirmação de doses</b><small>registro simples a cada toma</small></div></li>
+          <li data-cue="f4"><span class="ic">🕘</span><div><b>Histórico</b><small>para paciente e cuidador</small></div></li>
+          <li data-cue="f5"><span class="ic">📈</span><div><b>Indicadores de adesão + IA HUB</b><small>padrões, alertas e orientações</small></div></li>
+        </ul>
+        <div class="pill-model" data-cue="freemium">Modelo B2C <b>freemium</b> · Premium R$ 19,90/mês</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3–9. DEMONSTRAÇÃO (app real rodando) -->
+  <section class="scene" id="s-demo" data-chapter="Demonstração · sistema rodando">
+    <div class="demo">
+      <div class="demo-text">
+        <div class="live"><span class="dot"></span>App Vitalis rodando · Expo / React Native Web</div>
+        <div class="steps">
+          <article class="step" data-step="demo-welcome">
+            <p class="num">01 / 07</p>
+            <h2>Boas-vindas</h2>
+            <ul>
+              <li data-cue="b1">Próximo horário em destaque</li>
+              <li data-cue="b2">Medicamento e instrução de uso</li>
+              <li data-cue="b3">Lembretes restantes do dia</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-signup">
+            <p class="num">02 / 07</p>
+            <h2>Cadastro</h2>
+            <ul>
+              <li data-cue="b1">Nome e e-mail</li>
+              <li data-cue="b2">Senha com confirmação</li>
+              <li data-cue="b3">Aceite de termos e privacidade (LGPD)</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-home">
+            <p class="num">03 / 07</p>
+            <h2>Agenda de hoje</h2>
+            <ul>
+              <li data-cue="b1">Adesão semanal</li>
+              <li data-cue="b2">Próxima dose, ativos, confirmações e atrasos</li>
+              <li data-cue="b3">Atalhos rápidos</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-medication">
+            <p class="num">04 / 07</p>
+            <h2>Novo medicamento</h2>
+            <ul>
+              <li data-cue="b1">Nome e dosagem</li>
+              <li data-cue="b2">Horário da primeira dose</li>
+              <li data-cue="b3">Periodicidade: 6h, 8h, 12h ou 24h</li>
+              <li data-cue="b4">Próximas tomas calculadas automaticamente</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-monitoring">
+            <p class="num">05 / 07</p>
+            <h2>Monitoramento</h2>
+            <ul>
+              <li data-cue="b1">Adesão média, atrasos e horário crítico</li>
+              <li data-cue="b2">Confirmações por dia</li>
+              <li data-cue="b3">Alertas e desempenho por medicamento</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-analysis">
+            <p class="num">06 / 07</p>
+            <h2>Análise da rotina</h2>
+            <ul>
+              <li data-cue="b1">Nível de adesão e pontos críticos</li>
+              <li data-cue="b2">Próximos passos sugeridos</li>
+              <li data-cue="b3">Compartilhar com profissional de saúde</li>
+            </ul>
+          </article>
+          <article class="step" data-step="demo-history">
+            <p class="num">07 / 07</p>
+            <h2>Histórico e perfil</h2>
+            <ul>
+              <li data-cue="b1">Doses confirmadas, esquecimentos e ajustes</li>
+              <li data-cue="b2">Dados pessoais, notificações e privacidade</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen"><div class="statusbar"><span>9:41</span><span>●●● 100%</span></div><iframe id="app" name="app" title="App Vitalis"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. WEBSITE -->
+  <section class="scene" id="s-site" data-chapter="Landing page · website">
+    <div class="site">
+      <div class="browser">
+        <div class="bar"><span></span><span></span><span></span><div class="url">🔒 vitalis-website-main.vercel.app</div><div class="bar-label">Landing page · proposta de valor → cadastro gratuito</div></div>
+        <div class="viewport"><iframe id="site" title="Website Vitalis"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. INBOUND -->
+  <section class="scene" id="s-inbound" data-chapter="Etapa 1 · Estratégia de lançamento">
+    <div class="wrap">
+      <p class="eyebrow blue">1.1 Inbound marketing</p>
+      <h2 class="h1">Uma jornada de atração, conversão e encantamento</h2>
+      <div class="flow3">
+        <div class="stage-card" data-cue="c1">
+          <span class="tag">01</span><h3>Atração</h3>
+          <p>Conteúdo educativo em Instagram, Facebook e Google sobre horários, múltiplos medicamentos e cuidado com idosos.</p>
+          <div class="chips"><span>Posts</span><span>Reels</span><span>SEO</span></div>
+        </div>
+        <div class="arrow" data-cue="c2">→</div>
+        <div class="stage-card" data-cue="c2">
+          <span class="tag">02</span><h3>Conversão</h3>
+          <p>O conteúdo leva à landing page; funcionalidades e proposta de valor conduzem ao cadastro gratuito.</p>
+          <div class="chips"><span>Landing page</span><span>Cadastro gratuito</span></div>
+        </div>
+        <div class="arrow" data-cue="c3">→</div>
+        <div class="stage-card accent" data-cue="c3">
+          <span class="tag">03</span><h3>Encantamento</h3>
+          <p>Agenda, histórico, adesão e IA HUB estimulam uso recorrente, indicação e o plano Premium.</p>
+          <div class="chips"><span>Uso diário</span><span>Indicação</span><span>Premium</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. STORYTELLING / TRANSMÍDIA -->
+  <section class="scene" id="s-story" data-chapter="Etapa 1 · Estratégia de lançamento">
+    <div class="wrap">
+      <p class="eyebrow blue">1.2 Storytelling e transmídia</p>
+      <h2 class="display md quote">“Organizar a rotina de medicamentos não deveria depender da memória.”</h2>
+      <div class="journey" data-cue="journey">
+        <div><b>Problema</b><small>doses se confundem</small></div>
+        <div><b>Descoberta</b><small>Reels ou Google</small></div>
+        <div><b>Interesse</b><small>landing page</small></div>
+        <div><b>Cadastro</b><small>conta gratuita</small></div>
+        <div><b>Uso recorrente</b><small>agenda e histórico</small></div>
+        <div><b>Indicação / Premium</b><small>valor contínuo</small></div>
+      </div>
+      <div class="channels">
+        <div data-cue="ch1"><span class="ic">📱</span><b>Instagram / Facebook</b><small>apresentam o problema</small></div>
+        <div data-cue="ch2"><span class="ic">🎬</span><b>Reels</b><small>situações e demos curtas</small></div>
+        <div data-cue="ch3"><span class="ic">🌐</span><b>Landing page</b><small>benefícios e cadastro</small></div>
+        <div data-cue="ch4"><span class="ic">▶️</span><b>YouTube</b><small>funcionamento detalhado</small></div>
+      </div>
+      <p class="foot" data-cue="same">Mesma mensagem e identidade visual em todos os canais.</p>
+    </div>
+  </section>
+
+  <!-- 13. INFLUENCIADORES -->
+  <section class="scene" id="s-influencers" data-chapter="Etapa 1 · Estratégia de lançamento">
+    <div class="wrap">
+      <p class="eyebrow blue">1.3 Influenciadores digitais</p>
+      <h2 class="h1">Perfis aderentes ao público — começando por criadores acessíveis</h2>
+      <div class="influ">
+        <div class="person" data-cue="i1">
+          <div class="avatar">TC</div>
+          <div>
+            <h3>Tássia Chiarelli <span>@tassia.gerontologa</span></h3>
+            <p class="role">Gerontóloga · longevidade e envelhecimento</p>
+            <p>Público: familiares, cuidadores e interessados em envelhecimento saudável.</p>
+            <p class="camp">Campanha: <b>“Cuidar também é organizar”</b><br><small>conteúdo educativo + demonstração · <em>credibilidade</em></small></p>
+          </div>
+        </div>
+        <div class="person" data-cue="i2">
+          <div class="avatar green">60+</div>
+          <div>
+            <h3>Maria Helena e Tarcísio Cabral <span>@60demais</span></h3>
+            <p class="role">Tecnologia e inclusão digital 60+</p>
+            <p>Público: pessoas 60+ e familiares que ajudam no uso de tecnologia.</p>
+            <p class="camp">Campanha: <b>“Tecnologia que facilita o cuidado”</b><br><small>Reels passo a passo · <em>simplicidade</em></small></p>
+          </div>
+        </div>
+      </div>
+      <div class="metrics" data-cue="metrics">
+        <span>Mensuração:</span><b>links UTM</b><b>visitas à landing page</b><b>cadastros</b><b>custo por aquisição</b>
+        <em>Referências de parceria, sem contratação realizada.</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. MÍDIA -->
+  <section class="scene" id="s-media" data-chapter="Etapa 2 · Estratégia de mídia digital">
+    <div class="wrap">
+      <p class="eyebrow blue">2.1 Investimento mensal · 2.2 Funil</p>
+      <h2 class="h1">R$ 800/mês em mídia paga + orgânico interno</h2>
+      <div class="media">
+        <div class="budget">
+          <div class="stack">
+            <div class="seg g" data-cue="g" style="flex:400">Google Ads<br><b>R$ 400</b></div>
+            <div class="seg m" data-cue="m" style="flex:300">Instagram/Facebook<br><b>R$ 300</b></div>
+            <div class="seg r" data-cue="r" style="flex:100">Remarketing<br><b>R$ 100</b></div>
+          </div>
+          <ul class="legend">
+            <li data-cue="g"><i class="g"></i><b>Google Ads</b> busca por app de controle de medicamentos</li>
+            <li data-cue="m"><i class="m"></i><b>Meta Ads</b> Reels e anúncios com demonstração</li>
+            <li data-cue="r"><i class="r"></i><b>Remarketing</b> visitantes elegíveis, com consentimento</li>
+            <li data-cue="org"><i class="o"></i><b>SEO, conteúdo e LinkedIn</b> produção interna · parcerias B2B2C</li>
+          </ul>
+          <div class="privacy" data-cue="privacy">🔒 Histórico medicamentoso e condições clínicas <b>jamais</b> são usados para segmentação publicitária.</div>
+        </div>
+        <div class="funnel">
+          <div class="tier t1" data-cue="top"><b>TOPO · Descoberta</b><small>anúncios, educação e vídeos curtos</small></div>
+          <div class="tier t2" data-cue="mid"><b>MEIO · Compreensão</b><small>landing page, demonstrações e IA HUB</small></div>
+          <div class="tier t3" data-cue="bot"><b>FUNDO · Experimentação</b><small>cadastro gratuito, uso e Premium</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15. ROI -->
+  <section class="scene" id="s-roi" data-chapter="Etapa 2 · Estratégia de mídia digital">
+    <div class="wrap">
+      <p class="eyebrow blue">2.3 Estimativa de retorno</p>
+      <h2 class="h1">Do investimento à aquisição</h2>
+      <div class="roi">
+        <div class="chain">
+          <div data-cue="s1"><small>Investimento ÷ CAC</small><b>R$ 800 ÷ R$ 40</b></div>
+          <div data-cue="s2"><small>Assinantes Premium</small><b>20 × R$ 19,90</b><em>= R$ 398 de MRR inicial</em></div>
+          <div data-cue="s3"><small>Margem de contribuição</small><b>R$ 17,40</b><em>R$ 19,90 − R$ 2,50 de custo variável</em></div>
+          <div data-cue="s4" class="hi"><small>Contribuição em 6 meses</small><b>R$ 1.712</b><em>churn mensal de 8%</em></div>
+          <div data-cue="s5" class="hi2"><small>ROI estimado</small><b>≈ 114%</b><em>(1.712 − 800) ÷ 800</em></div>
+        </div>
+        <div class="chart" data-cue="chart">
+          <p class="ct">Contribuição mensal da coorte (R$)</p>
+          <svg viewBox="0 0 640 380" id="roi-chart"></svg>
+          <p class="cl"><i class="bar"></i>contribuição no mês &nbsp; <i class="line"></i>acumulado &nbsp; <i class="dash"></i>investimento R$ 800</p>
+        </div>
+      </div>
+      <p class="foot" data-cue="note">Cenário projetado para fins acadêmicos · exclui custos fixos · não representa lucro líquido.</p>
+    </div>
+  </section>
+
+  <!-- 16. SEGURANÇA -->
+  <section class="scene" id="s-security" data-chapter="Etapa 2 · Segurança e gestão social">
+    <div class="wrap">
+      <p class="eyebrow blue">2.4 Protocolo de segurança, monitoramento e gestão em redes sociais</p>
+      <h2 class="h1">Proteger contas, dados e reputação</h2>
+      <div class="sec">
+        <div data-cue="p1"><span class="n">01</span><h3>🛡️ Prevenção</h3><p>MFA em todas as contas, permissões individuais, gestor de senhas e revisão periódica de acessos. Nenhum dado de saúde de usuário divulgado.</p></div>
+        <div data-cue="p2"><span class="n">02</span><h3>👁️ Monitoramento</h3><p>Menções, comentários, tentativas de acesso, perfis falsos e publicações não autorizadas.</p></div>
+        <div data-cue="p3"><span class="n">03</span><h3>⚡ Resposta a ataques</h3><p>Revogar sessões suspeitas, trocar credenciais, bloquear acessos comprometidos, investigar e comunicar conforme a LGPD.</p></div>
+        <div data-cue="p4"><span class="n">04</span><h3>📣 Crises e fake news</h3><p>Verificar fatos, esclarecer nos canais oficiais, responder críticas legítimas e acompanhar a repercussão sem expor dados pessoais.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. ENCERRAMENTO -->
+  <section class="scene" id="s-closing" data-chapter="Conclusão">
+    <div class="intro closing">
+      <div class="logo big">V</div>
+      <h2 class="display md">Organizar a rotina de medicamentos não deveria depender da memória.</h2>
+      <div class="links" data-cue="links">
+        <div><small>Website</small><b>vitalis-website-main.vercel.app</b></div>
+        <div><small>Código web</small><b>github.com/EspanholHS/vitalis-website</b></div>
+        <div><small>Código mobile</small><b>github.com/EspanholHS/vitalis-mobile</b></div>
+      </div>
+      <p class="thanks" data-cue="thanks">Obrigado! · Giovanni · Renato · Victor</p>
+    </div>
+  </section>
+
+  <div id="tap"></div>
+</div>
+<script src="stage.js"></script>
+</body>
+</html>
