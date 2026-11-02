@@ -4,7 +4,7 @@ Voz: `Ngh50DOYwTlTknff8kRk` · Modelo: `eleven_multilingual_v2`
 
 **1. Abertura**
 
-Olá! Somos a equipe Vitalis: Giovanni Braga Bernardo, Renato Milsoni e Victor Espanhol. Neste vídeo, apresentamos a solução, mostramos o sistema funcionando e o nosso plano de lançamento e crescimento.
+Olá! Somos a equipe Vitalis: Giovanni Braga Bernardo, Renato Milsoni, Victor Espanhol e Thiago Farias Martins. Neste vídeo, apresentamos a solução, mostramos o sistema funcionando e o nosso plano de lançamento e crescimento.
 
 **2. Problema e solução**
 
@@ -72,4 +72,4 @@ Com posicionamento claro, canais coerentes, aquisição mensurável e proteção
 
 ---
 
-Palavras: 692 · Caracteres: 4382
+Palavras: 695 · Caracteres: 4405

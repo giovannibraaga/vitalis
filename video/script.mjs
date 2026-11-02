@@ -14,7 +14,7 @@ export const scenes = [
   {
     id: 'intro',
     text:
-      'Olá! Somos a equipe Vitalis: Giovanni Braga Bernardo, Renato Milsoni e Victor Espanhol. ' +
+      'Olá! Somos a equipe Vitalis: Giovanni Braga Bernardo, Renato Milsoni, Victor Espanhol e Thiago Farias Martins. ' +
       'Neste vídeo, apresentamos a solução, mostramos o sistema funcionando e o nosso plano de lançamento e crescimento.',
     cues: [['team', 'Giovanni'], ['agenda', 'Neste vídeo']],
   },
