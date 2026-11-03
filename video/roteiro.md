@@ -4,7 +4,7 @@ Voz: `Ngh50DOYwTlTknff8kRk` · Modelo: `eleven_multilingual_v2`
 
 **1. Abertura**
 
-Olá! Somos a equipe Vitalis: Giovanni Braga Bernardo, Renato Milsoni, Victor Espanhol e Thiago Farias Martins. Neste vídeo, apresentamos a solução, mostramos o sistema funcionando e o nosso plano de lançamento e crescimento.
+Olá! Eu sou o Giovanni e, junto com meus colegas Renato, Victor e Thiago, criamos a Vitalis. Neste vídeo, vamos apresentar a solução, mostrar o sistema funcionando e contar o nosso plano de lançamento e crescimento.
 
 **2. Problema e solução**
 
