@@ -490,8 +490,15 @@ table.budget tr.total td { border-top: 2px solid var(--ink); font-family: 'Poppi
 })();
 // Link do vídeo (preenchido pelo build-pdf.mjs)
 (function () {
-  const url = new URLSearchParams(location.search).get('video') || '[inserir link do YouTube após publicação]';
-  document.querySelectorAll('.video-url').forEach((e) => (e.textContent = url));
+  const url = new URLSearchParams(location.search).get('video') || 'https://youtu.be/e345EXoMviQ';
+  document.querySelectorAll('.video-url').forEach((e) => {
+    e.textContent = '';
+    const a = document.createElement('a');
+    a.textContent = url;
+    if (/^https?:/.test(url)) a.href = url;
+    a.style.cssText = 'color:inherit;text-decoration:none';
+    e.appendChild(a);
+  });
 })();
 </script>
 </body>
